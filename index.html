@@ -45,11 +45,9 @@
     <button onclick="filtrarCiclo('Internado')">Internado</button>
   </div>
 
-  <!-- Contenedor de materias -->
   <main id="grid-container"></main>
 
-  <!-- Script con todos los ciclos definidos -->
-  <script src="script_full_pensum_con_ciclos.js"></script>
+  <script src="script_pensum_ciclos_final.js"></script>
   <script>
     let cicloActual = 'Todos';
 
@@ -62,7 +60,6 @@
       renderMaterias();
     }
 
-    // Sobreescribir renderMaterias para aplicar filtro de ciclo
     function renderMaterias() {
       const contenedor = document.getElementById("grid-container");
       contenedor.innerHTML = "";
