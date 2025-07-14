@@ -1,1347 +1,305 @@
-const subjects = [
-  {
-    "id": "s000",
-    "name": "Electiva de Arte",
-    "prereqs": [],
-    "semester": "1-1"
-  },
-  {
-    "id": "s001",
-    "name": "Biología I",
-    "prereqs": [],
-    "semester": "1-1"
-  },
-  {
-    "id": "s002",
-    "name": "Laboratorio de Biología I",
-    "prereqs": [],
-    "semester": "1-1"
-  },
-  {
-    "id": "s003",
-    "name": "Electiva Historia y Sociedad Mundial",
-    "prereqs": [],
-    "semester": "1-1"
-  },
-  {
-    "id": "s004",
-    "name": "Electiva de Ciencia y Humanismo",
-    "prereqs": [],
-    "semester": "1-1"
-  },
-  {
-    "id": "s005",
-    "name": "Español I",
-    "prereqs": [],
-    "semester": "1-1"
-  },
-  {
-    "id": "s006",
-    "name": "Razonamiento Lógico y Matemático",
-    "prereqs": [],
-    "semester": "1-1"
-  },
-  {
-    "id": "s007",
-    "name": "Orientación Académica",
-    "prereqs": [],
-    "semester": "1-1"
-  },
-  {
-    "id": "s008",
-    "name": "Biología II",
-    "prereqs": [
-      "s001"
-    ],
-    "semester": "1-2"
-  },
-  {
-    "id": "s009",
-    "name": "Laboratorio de Biología II",
-    "prereqs": [
-      "s002"
-    ],
-    "semester": "1-2"
-  },
-  {
-    "id": "s010",
-    "name": "Electiva de Deporte",
-    "prereqs": [],
-    "semester": "1-2"
-  },
-  {
-    "id": "s011",
-    "name": "Español II",
-    "prereqs": [
-      "s005"
-    ],
-    "semester": "1-2"
-  },
-  {
-    "id": "s012",
-    "name": "Matemáticas para Ciencias",
-    "prereqs": [],
-    "semester": "1-2"
-  },
-  {
-    "id": "s013",
-    "name": "Química I",
-    "prereqs": [
-      "s006"
-    ],
-    "semester": "1-2"
-  },
-  {
-    "id": "s014",
-    "name": "Laboratorio de Química I",
-    "prereqs": [
-      "s006"
-    ],
-    "semester": "1-2"
-  },
-  {
-    "id": "s015",
-    "name": "Electiva de Filosofía",
-    "prereqs": [],
-    "semester": "1-3"
-  },
-  {
-    "id": "s016",
-    "name": "Física I",
-    "prereqs": [
-      "s012"
-    ],
-    "semester": "1-3"
-  },
-  {
-    "id": "s017",
-    "name": "Laboratorio de Física I",
-    "prereqs": [
-      "s012"
-    ],
-    "semester": "1-3"
-  },
-  {
-    "id": "s018",
-    "name": "Electiva Historia y Sociedad Dominicana",
-    "prereqs": [],
-    "semester": "1-3"
-  },
-  {
-    "id": "s019",
-    "name": "Química II",
-    "prereqs": [
-      "s013",
-      "s014"
-    ],
-    "semester": "1-3"
-  },
-  {
-    "id": "s020",
-    "name": "Laboratorio de Química II",
-    "prereqs": [
-      "s013",
-      "s014"
-    ],
-    "semester": "1-3"
-  },
-  {
-    "id": "s021",
-    "name": "Sociología de la Salud",
-    "prereqs": [],
-    "semester": "1-3"
-  },
-  {
-    "id": "s022",
-    "name": "Biología Celular y Genética",
-    "prereqs": [
-      "s008",
-      "s009"
-    ],
-    "semester": "2-1"
-  },
-  {
-    "id": "s023",
-    "name": "Laboratorio de Biología Celular y Genética",
-    "prereqs": [
-      "s008",
-      "s009"
-    ],
-    "semester": "2-1"
-  },
-  {
-    "id": "s024",
-    "name": "Física II",
-    "prereqs": [
-      "s016",
-      "s017"
-    ],
-    "semester": "2-1"
-  },
-  {
-    "id": "s025",
-    "name": "Laboratorio de Física II",
-    "prereqs": [
-      "s016",
-      "s017"
-    ],
-    "semester": "2-1"
-  },
-  {
-    "id": "s026",
-    "name": "Inglés I",
-    "prereqs": [],
-    "semester": "2-1"
-  },
-  {
-    "id": "s027",
-    "name": "Electiva de Literatura",
-    "prereqs": [],
-    "semester": "2-1"
-  },
-  {
-    "id": "s028",
-    "name": "Química Orgánica I",
-    "prereqs": [
-      "s019",
-      "s020"
-    ],
-    "semester": "2-1"
-  },
-  {
-    "id": "s029",
-    "name": "Laboratorio de Química Orgánica I",
-    "prereqs": [
-      "s019",
-      "s020"
-    ],
-    "semester": "2-1"
-  },
-  {
-    "id": "s030",
-    "name": "Introducción a la Anatomía",
-    "prereqs": [
-      "s008"
-    ],
-    "semester": "2-2"
-  },
-  {
-    "id": "s031",
-    "name": "Introducción a la Fisiología",
-    "prereqs": [
-      "s016"
-    ],
-    "semester": "2-2"
-  },
-  {
-    "id": "s032",
-    "name": "Antropología Cristiana",
-    "prereqs": [],
-    "semester": "2-2"
-  },
-  {
-    "id": "s033",
-    "name": "Inglés II",
-    "prereqs": [
-      "s026"
-    ],
-    "semester": "2-2"
-  },
-  {
-    "id": "s034",
-    "name": "Psicología de la Salud I",
-    "prereqs": [],
-    "semester": "2-2"
-  },
-  {
-    "id": "s035",
-    "name": "Química Orgánica II",
-    "prereqs": [
-      "s028",
-      "s029"
-    ],
-    "semester": "2-2"
-  },
-  {
-    "id": "s036",
-    "name": "Laboratorio de Química Orgánica II",
-    "prereqs": [
-      "s028",
-      "s029"
-    ],
-    "semester": "2-2"
-  },
-  {
-    "id": "s037",
-    "name": "Microbiología General",
-    "prereqs": [
-      "s008"
-    ],
-    "semester": "2-3"
-  },
-  {
-    "id": "s038",
-    "name": "Laboratorio de Microbiología General",
-    "prereqs": [
-      "s008"
-    ],
-    "semester": "2-3"
-  },
-  {
-    "id": "s039",
-    "name": "Electiva de Ciencia Ambiental",
-    "prereqs": [],
-    "semester": "2-3"
-  },
-  {
-    "id": "s040",
-    "name": "Laboratorio de Ciencia Ambiental",
-    "prereqs": [],
-    "semester": "2-3"
-  },
-  {
-    "id": "s041",
-    "name": "Inglés III",
-    "prereqs": [
-      "s033"
-    ],
-    "semester": "2-3"
-  },
-  {
-    "id": "s042",
-    "name": "Psicología de la Salud II",
-    "prereqs": [
-      "s034"
-    ],
-    "semester": "2-3"
-  },
-  {
-    "id": "s043",
-    "name": "Fundamentos de Metodología de la Investigación",
-    "prereqs": [
-      "s012"
-    ],
-    "semester": "2-3"
-  },
-  {
-    "id": "s044",
-    "name": "Fundamentos de Medicina",
-    "prereqs": [
-      "s007",
-      "s011",
-      "s022",
-      "s032",
-      "s042",
-      "s035",
-      "s036",
-      "s043"
-    ],
-    "semester": "3-1"
-  },
-  {
-    "id": "s045",
-    "name": "Ciencias Morfológicas I",
-    "prereqs": [
-      "s007",
-      "s011",
-      "s022",
-      "s032",
-      "s042",
-      "s035",
-      "s036",
-      "s043"
-    ],
-    "semester": "3-1"
-  },
-  {
-    "id": "s046",
-    "name": "Ciencias Fisiológicas I",
-    "prereqs": [
-      "s007",
-      "s011",
-      "s022",
-      "s032",
-      "s042",
-      "s035",
-      "s036",
-      "s043"
-    ],
-    "semester": "3-1"
-  },
-  {
-    "id": "s047",
-    "name": "Inmunología I",
-    "prereqs": [
-      "s007",
-      "s011",
-      "s022",
-      "s032",
-      "s042",
-      "s035",
-      "s036",
-      "s043"
-    ],
-    "semester": "3-1"
-  },
-  {
-    "id": "s048",
-    "name": "Bioquímica I",
-    "prereqs": [
-      "s007",
-      "s011",
-      "s022",
-      "s032",
-      "s042",
-      "s035",
-      "s036",
-      "s043"
-    ],
-    "semester": "3-1"
-  },
-  {
-    "id": "s049",
-    "name": "Bioestadística",
-    "prereqs": [
-      "s007",
-      "s011",
-      "s022",
-      "s032",
-      "s042",
-      "s035",
-      "s036",
-      "s043"
-    ],
-    "semester": "3-2"
-  },
-  {
-    "id": "s050",
-    "name": "Biología Molecular y Genética",
-    "prereqs": [
-      "s007",
-      "s011",
-      "s022",
-      "s032",
-      "s042",
-      "s035",
-      "s036",
-      "s043"
-    ],
-    "semester": "3-2"
-  },
-  {
-    "id": "s051",
-    "name": "Epidemiología de Campo",
-    "prereqs": [],
-    "semester": "3-2"
-  },
-  {
-    "id": "s052",
-    "name": "Ciencias Morfológicas II",
-    "prereqs": [
-      "s045"
-    ],
-    "semester": "3-2"
-  },
-  {
-    "id": "s053",
-    "name": "Ciencias Fisiológicas II",
-    "prereqs": [
-      "s046"
-    ],
-    "semester": "3-2"
-  },
-  {
-    "id": "s054",
-    "name": "Inmunología II",
-    "prereqs": [
-      "s047"
-    ],
-    "semester": "3-2"
-  },
-  {
-    "id": "s055",
-    "name": "Bioquímica II",
-    "prereqs": [
-      "s048"
-    ],
-    "semester": "3-2"
-  },
-  {
-    "id": "s056",
-    "name": "Destrezas Médicas I",
-    "prereqs": [
-      "s044",
-      "s045"
-    ],
-    "semester": "3-2"
-  },
-  {
-    "id": "s057",
-    "name": "Inglés para la Salud",
-    "prereqs": [
-      "s041"
-    ],
-    "semester": "3-3"
-  },
-  {
-    "id": "s058",
-    "name": "Salud Pública",
-    "prereqs": [],
-    "semester": "3-3"
-  },
-  {
-    "id": "s059",
-    "name": "Bioética Médica",
-    "prereqs": [
-      "s032",
-      "s044"
-    ],
-    "semester": "3-3"
-  },
-  {
-    "id": "s060",
-    "name": "Fisiopatología I",
-    "prereqs": [
-      "s052",
-      "s055"
-    ],
-    "semester": "3-3"
-  },
-  {
-    "id": "s061",
-    "name": "Farmacología I",
-    "prereqs": [
-      "s055"
-    ],
-    "semester": "3-3"
-  },
-  {
-    "id": "s062",
-    "name": "Epidemiología Clínica",
-    "prereqs": [
-      "s051"
-    ],
-    "semester": "3-3"
-  },
-  {
-    "id": "s063",
-    "name": "Microbiología y Parasitología",
-    "prereqs": [
-      "s050"
-    ],
-    "semester": "3-3"
-  },
-  {
-    "id": "s064",
-    "name": "Destrezas Médicas II",
-    "prereqs": [
-      "s056"
-    ],
-    "semester": "3-3"
-  },
-  {
-    "id": "s065",
-    "name": "Gestión en Salud",
-    "prereqs": [],
-    "semester": "4-1"
-  },
-  {
-    "id": "s066",
-    "name": "Patología I",
-    "prereqs": [
-      "s060",
-      "s063"
-    ],
-    "semester": "4-1"
-  },
-  {
-    "id": "s067",
-    "name": "Farmacología II y Toxicología",
-    "prereqs": [
-      "s061",
-      "s060",
-      "s063"
-    ],
-    "semester": "4-1"
-  },
-  {
-    "id": "s068",
-    "name": "Medicina Familiar y Comunitaria I",
-    "prereqs": [
-      "s064",
-      "s058"
-    ],
-    "semester": "4-1"
-  },
-  {
-    "id": "s069",
-    "name": "Fisiopatología II",
-    "prereqs": [
-      "s060"
-    ],
-    "semester": "4-1"
-  },
-  {
-    "id": "s070",
-    "name": "Medicina Basada en Evidencia",
-    "prereqs": [
-      "s062"
-    ],
-    "semester": "4-1"
-  },
-  {
-    "id": "s071",
-    "name": "Patología II",
-    "prereqs": [
-      "s066"
-    ],
-    "semester": "4-2"
-  },
-  {
-    "id": "s072",
-    "name": "Medicina Familiar y Comunitaria II",
-    "prereqs": [
-      "s068"
-    ],
-    "semester": "4-2"
-  },
-  {
-    "id": "s073",
-    "name": "Salud Mental",
-    "prereqs": [
-      "s064"
-    ],
-    "semester": "4-2"
-  },
-  {
-    "id": "s074",
-    "name": "Neurología",
-    "prereqs": [
-      "s069"
-    ],
-    "semester": "4-2"
-  },
-  {
-    "id": "s075",
-    "name": "Neurociencias Biológicas",
-    "prereqs": [
-      "s069",
-      "s067"
-    ],
-    "semester": "4-2"
-  },
-  {
-    "id": "s076",
-    "name": "Tema de Tesis",
-    "prereqs": [
-      "s065",
-      "s070"
-    ],
-    "semester": "4-2"
-  },
-  {
-    "id": "s077",
-    "name": "Moral Médica",
-    "prereqs": [],
-    "semester": "4-3"
-  },
-  {
-    "id": "s078",
-    "name": "Pediatría I",
-    "prereqs": [
-      "s071",
-      "s073",
-      "s075"
-    ],
-    "semester": "4-3"
-  },
-  {
-    "id": "s079",
-    "name": "Cardiopulmonar",
-    "prereqs": [
-      "s071",
-      "s075"
-    ],
-    "semester": "4-3"
-  },
-  {
-    "id": "s080",
-    "name": "Ciencias Médicas Básicas Integradas",
-    "prereqs": [
-      "s071",
-      "s075"
-    ],
-    "semester": "4-3"
-  },
-  {
-    "id": "s081",
-    "name": "Anteproyecto de Tesis",
-    "prereqs": [
-      "s076"
-    ],
-    "semester": "4-3"
-  },
-  {
-    "id": "s082",
-    "name": "Nefrología",
-    "prereqs": [
-      "s071",
-      "s075"
-    ],
-    "semester": "4-3"
-  },
-  {
-    "id": "s083",
-    "name": "Medicina Familiar y Comunitaria III",
-    "prereqs": [
-      "s072"
-    ],
-    "semester": "4-3"
-  },
-  {
-    "id": "s084",
-    "name": "Medicina Legal",
-    "prereqs": [
-      "s077"
-    ],
-    "semester": "5-1"
-  },
-  {
-    "id": "s085",
-    "name": "Hemato/Oncología",
-    "prereqs": [
-      "s080"
-    ],
-    "semester": "5-1"
-  },
-  {
-    "id": "s086",
-    "name": "Geriatría",
-    "prereqs": [
-      "s075"
-    ],
-    "semester": "5-1"
-  },
-  {
-    "id": "s087",
-    "name": "Gastroenterología",
-    "prereqs": [
-      "s080"
-    ],
-    "semester": "5-1"
-  },
-  {
-    "id": "s088",
-    "name": "Pediatría II",
-    "prereqs": [
-      "s078",
-      "s080"
-    ],
-    "semester": "5-1"
-  },
-  {
-    "id": "s089",
-    "name": "Tesis",
-    "prereqs": [
-      "s081"
-    ],
-    "semester": "5-1"
-  },
-  {
-    "id": "s090",
-    "name": "Endocrinología y Nutrición",
-    "prereqs": [
-      "s080"
-    ],
-    "semester": "5-1"
-  },
-  {
-    "id": "s091",
-    "name": "Obstetricia y Perinatología",
-    "prereqs": [
-      "s080"
-    ],
-    "semester": "5-1"
-  },
-  {
-    "id": "s092",
-    "name": "Electiva Profesional I",
-    "prereqs": [],
-    "semester": "5-1"
-  },
-  {
-    "id": "s093",
-    "name": "Ginecología",
-    "prereqs": [
-      "s080"
-    ],
-    "semester": "5-2"
-  },
-  {
-    "id": "s094",
-    "name": "Urología",
-    "prereqs": [
-      "s080"
-    ],
-    "semester": "5-2"
-  },
-  {
-    "id": "s095",
-    "name": "Oto/Oftalmología",
-    "prereqs": [
-      "s080"
-    ],
-    "semester": "5-2"
-  },
-  {
-    "id": "s096",
-    "name": "Infectología",
-    "prereqs": [
-      "s080"
-    ],
-    "semester": "5-2"
-  },
-  {
-    "id": "s097",
-    "name": "Reumatología",
-    "prereqs": [
-      "s080"
-    ],
-    "semester": "5-2"
-  },
-  {
-    "id": "s098",
-    "name": "Cirugía y Anestesia",
-    "prereqs": [
-      "s080"
-    ],
-    "semester": "5-2"
-  },
-  {
-    "id": "s099",
-    "name": "Trauma y Ortopedia",
-    "prereqs": [
-      "s080"
-    ],
-    "semester": "5-2"
-  },
-  {
-    "id": "s100",
-    "name": "Dermatología",
-    "prereqs": [
-      "s080"
-    ],
-    "semester": "5-2"
-  },
-  {
-    "id": "s101",
-    "name": "Electiva Profesional II",
-    "prereqs": [],
-    "semester": "5-2"
-  },
-  {
-    "id": "s102",
-    "name": "Internado de Cirugía",
-    "prereqs": [
-      "s089",
-      "s084",
-      "s098"
-    ],
-    "semester": "6-1"
-  },
-  {
-    "id": "s103",
-    "name": "Internado de Medicina Social, Comunitaria y Familiar",
-    "prereqs": [
-      "s089",
-      "s084"
-    ],
-    "semester": "6-1"
-  },
-  {
-    "id": "s104",
-    "name": "Internado de Pediatría",
-    "prereqs": [
-      "s089",
-      "s084",
-      "s088"
-    ],
-    "semester": "6-2"
-  },
-  {
-    "id": "s105",
-    "name": "Internado de Ginecología y Obstetricia",
-    "prereqs": [
-      "s089",
-      "s084",
-      "s091",
-      "s093"
-    ],
-    "semester": "6-2"
-  },
-  {
-    "id": "s106",
-    "name": "Internado de Psiquiatría",
-    "prereqs": [
-      "s089",
-      "s084",
-      "s073"
-    ],
-    "semester": "6-2"
-  },
-  {
-    "id": "s107",
-    "name": "Internado de Medicina Interna",
-    "prereqs": [
-      "s089",
-      "s084"
-    ],
-    "semester": "6-2"
-  }
-];
-
-[
-  {
-    "id": "s000",
-    "name": "Electiva de Arte",
-    "prereqs": [],
-    "semester": "1-1"
-  },
-  {
-    "id": "s001",
-    "name": "Biología I",
-    "prereqs": [],
-    "semester": "1-1"
-  },
-  {
-    "id": "s002",
-    "name": "Laboratorio de Biología I",
-    "prereqs": [],
-    "semester": "1-1"
-  },
-  {
-    "id": "s003",
-    "name": "Electiva Historia y Sociedad Mundial",
-    "prereqs": [],
-    "semester": "1-1"
-  },
-  {
-    "id": "s004",
-    "name": "Electiva de Ciencia y Humanismo",
-    "prereqs": [],
-    "semester": "1-1"
-  },
-  {
-    "id": "s005",
-    "name": "Español I",
-    "prereqs": [],
-    "semester": "1-1"
-  },
-  {
-    "id": "s006",
-    "name": "Razonamiento Lógico y Matemático",
-    "prereqs": [],
-    "semester": "1-1"
-  },
-  {
-    "id": "s007",
-    "name": "Orientación Académica",
-    "prereqs": [],
-    "semester": "1-1"
-  },
-  {
-    "id": "s008",
-    "name": "Biología II",
-    "prereqs": [
-      "s001"
-    ],
-    "semester": "1-2"
-  },
-  {
-    "id": "s009",
-    "name": "Laboratorio de Biología II",
-    "prereqs": [
-      "s002"
-    ],
-    "semester": "1-2"
-  },
-  {
-    "id": "s010",
-    "name": "Electiva de Deporte",
-    "prereqs": [],
-    "semester": "1-2"
-  },
-  {
-    "id": "s011",
-    "name": "Español II",
-    "prereqs": [
-      "s005"
-    ],
-    "semester": "1-2"
-  },
-  {
-    "id": "s012",
-    "name": "Matemáticas para Ciencias",
-    "prereqs": [],
-    "semester": "1-2"
-  },
-  {
-    "id": "s013",
-    "name": "Química I",
-    "prereqs": [
-      "s006"
-    ],
-    "semester": "1-2"
-  },
-  {
-    "id": "s014",
-    "name": "Laboratorio de Química I",
-    "prereqs": [
-      "s006"
-    ],
-    "semester": "1-2"
-  },
-  {
-    "id": "s015",
-    "name": "Electiva de Filosofía",
-    "prereqs": [],
-    "semester": "1-3"
-  },
-  {
-    "id": "s016",
-    "name": "Física I",
-    "prereqs": [
-      "s012"
-    ],
-    "semester": "1-3"
-  },
-  {
-    "id": "s017",
-    "name": "Laboratorio de Física I",
-    "prereqs": [
-      "s012"
-    ],
-    "semester": "1-3"
-  },
-  {
-    "id": "s018",
-    "name": "Electiva Historia y Sociedad Dominicana",
-    "prereqs": [],
-    "semester": "1-3"
-  },
-  {
-    "id": "s019",
-    "name": "Química II",
-    "prereqs": [
-      "s013",
-      "s014"
-    ],
-    "semester": "1-3"
-  },
-  {
-    "id": "s020",
-    "name": "Laboratorio de Química II",
-    "prereqs": [
-      "s013",
-      "s014"
-    ],
-    "semester": "1-3"
-  },
-  {
-    "id": "s021",
-    "name": "Sociología de la Salud",
-    "prereqs": [],
-    "semester": "1-3"
-  },
-  {
-    "id": "s022",
-    "name": "Biología Celular y Genética",
-    "prereqs": [
-      "s008",
-      "s009"
-    ],
-    "semester": "2-1"
-  },
-  {
-    "id": "s023",
-    "name": "Laboratorio de Biología Celular y Genética",
-    "prereqs": [
-      "s008",
-      "s009"
-    ],
-    "semester": "2-1"
-  },
-  {
-    "id": "s024",
-    "name": "Física II",
-    "prereqs": [
-      "s016",
-      "s017"
-    ],
-    "semester": "2-1"
-  },
-  {
-    "id": "s025",
-    "name": "Laboratorio de Física II",
-    "prereqs": [
-      "s016",
-      "s017"
-    ],
-    "semester": "2-1"
-  },
-  {
-    "id": "s026",
-    "name": "Inglés I",
-    "prereqs": [],
-    "semester": "2-1"
-  },
-  {
-    "id": "s027",
-    "name": "Electiva de Literatura",
-    "prereqs": [],
-    "semester": "2-1"
-  },
-  {
-    "id": "s028",
-    "name": "Química Orgánica I",
-    "prereqs": [
-      "s019",
-      "s020"
-    ],
-    "semester": "2-1"
-  },
-  {
-    "id": "s029",
-    "name": "Laboratorio de Química Orgánica I",
-    "prereqs": [
-      "s019",
-      "s020"
-    ],
-    "semester": "2-1"
-  },
-  {
-    "id": "s030",
-    "name": "Introducción a la Anatomía",
-    "prereqs": [
-      "s008"
-    ],
-    "semester": "2-2"
-  },
-  {
-    "id": "s031",
-    "name": "Introducción a la Fisiología",
-    "prereqs": [
-      "s016"
-    ],
-    "semester": "2-2"
-  },
-  {
-    "id": "s032",
-    "name": "Antropología Cristiana",
-    "prereqs": [],
-    "semester": "2-2"
-  },
-  {
-    "id": "s033",
-    "name": "Inglés II",
-    "prereqs": [
-      "s026"
-    ],
-    "semester": "2-2"
-  },
-  {
-    "id": "s034",
-    "name": "Psicología de la Salud I",
-    "prereqs": [],
-    "semester": "2-2"
-  },
-  {
-    "id": "s035",
-    "name": "Química Orgánica II",
-    "prereqs": [
-      "s028",
-      "s029"
-    ],
-    "semester": "2-2"
-  },
-  {
-    "id": "s036",
-    "name": "Laboratorio de Química Orgánica II",
-    "prereqs": [
-      "s028",
-      "s029"
-    ],
-    "semester": "2-2"
-  },
-  {
-    "id": "s037",
-    "name": "Microbiología General",
-    "prereqs": [
-      "s008"
-    ],
-    "semester": "2-3"
-  },
-  {
-    "id": "s038",
-    "name": "Laboratorio de Microbiología General",
-    "prereqs": [
-      "s008"
-    ],
-    "semester": "2-3"
-  },
-  {
-    "id": "s039",
-    "name": "Electiva de Ciencia Ambiental",
-    "prereqs": [],
-    "semester": "2-3"
-  },
-  {
-    "id": "s040",
-    "name": "Laboratorio de Ciencia Ambiental",
-    "prereqs": [],
-    "semester": "2-3"
-  },
-  {
-    "id": "s041",
-    "name": "Inglés III",
-    "prereqs": [
-      "s033"
-    ],
-    "semester": "2-3"
-  },
-  {
-    "id": "s042",
-    "name": "Psicología de la Salud II",
-    "prereqs": [
-      "s034"
-    ],
-    "semester": "2-3"
-  },
-  {
-    "id": "s043",
-    "name": "Fundamentos de Metodología de la Investigación",
-    "prereqs": [
-      "s012"
-    ],
-    "semester": "2-3"
-  },
-  {
-    "id": "s044",
-    "name": "Fundamentos de Medicina",
-    "prereqs": [
-      "s007",
-      "s011",
-      "s022",
-      "s032",
-      "s042",
-      "s035",
-      "s036",
-      "s043"
-    ],
-    "semester": "3-1"
-  },
-  {
-    "id": "s045",
-    "name": "Ciencias Morfológicas I",
-    "prereqs": [
-      "s007",
-      "s011",
-      "s022",
-      "s032",
-      "s042",
-      "s035",
-      "s036",
-      "s043"
-    ],
-    "semester": "3-1"
-  },
-  {
-    "id": "s046",
-    "name": "Ciencias Fisiológicas I",
-    "prereqs": [
-      "s007",
-      "s011",
-      "s022",
-      "s032",
-      "s042",
-      "s035",
-      "s036",
-      "s043"
-    ],
-    "semester": "3-1"
-  },
-  {
-    "id": "s047",
-    "name": "Inmunología I",
-    "prereqs": [
-      "s007",
-      "s011",
-      "s022",
-      "s032",
-      "s042",
-      "s035",
-      "s036",
-      "s043"
-    ],
-    "semester": "3-1"
-  },
-  {
-    "id": "s048",
-    "name": "Bioquímica I",
-    "prereqs": [
-      "s007",
-      "s011",
-      "s022",
-      "s032",
-      "s042",
-      "s035",
-      "s036",
-      "s043"
-    ],
-    "semester": "3-1"
-  }
-];
-
-
-function createSubjectCard(subject) {
-  const div = document.createElement("div");
-  div.className = "subject locked";
-  div.id = subject.id;
-  div.innerText = subject.name;
-  div.dataset.prereqs = JSON.stringify(subject.prereqs);
-
-  div.addEventListener("click", () => {
-    if (!div.classList.contains("locked")) {
-      div.classList.toggle("completed");
-      unlockSubjects();
-    }
-  });
-
-  return div;
-}
-
-function unlockSubjects() {
-  subjects.forEach((subject) => {
-    const el = document.getElementById(subject.id);
-    const prereqs = subject.prereqs;
-    const fulfilled = prereqs.every((pid) => {
-      const prereqEl = document.getElementById(pid);
-      return prereqEl && prereqEl.classList.contains("completed");
-    });
-
-    if (fulfilled) {
-      el.classList.remove("locked");
-    } else {
-      el.classList.add("locked");
-    }
-  });
-}
-
-window.onload = () => {
-  const grid = document.getElementById("grid");
-  subjects.forEach((subject) => {
-    const card = createSubjectCard(subject);
-    grid.appendChild(card);
-  });
-  unlockSubjects();
+// Define all subject prerequisites based on the curriculum
+const prerequisites = {
+    // Semestre I -> II
+    'biologia-ii': ['biologia-i'],
+    'lab-biologia-ii': ['lab-biologia-i'],
+    'espanol-ii': ['espanol-i'],
+    'quimica-i': ['razonamiento-logico'],
+    'lab-quimica-i': ['razonamiento-logico'],
+    
+    // Semestre II -> III
+    'fisica-i': ['matematicas-ciencias'],
+    'lab-fisica-i': ['matematicas-ciencias'],
+    'quimica-ii': ['quimica-i'],
+    'lab-quimica-ii': ['quimica-i', 'lab-quimica-i'],
+    
+    // Semestre III -> Segundo Año Semestre I
+    'biologia-celular': ['biologia-ii'],
+    'lab-biologia-celular': ['biologia-ii', 'lab-biologia-ii'],
+    'fisica-ii': ['fisica-i'],
+    'lab-fisica-ii': ['fisica-i', 'lab-fisica-i'],
+    'quimica-organica-i': ['quimica-ii'],
+    'lab-quimica-organica-i': ['quimica-ii', 'lab-quimica-ii'],
+    
+    // Segundo Año Semestre I -> II
+    'intro-anatomia': ['biologia-ii'],
+    'intro-fisiologia': ['fisica-i'],
+    'ingles-ii': ['ingles-i'],
+    'quimica-organica-ii': ['quimica-organica-i'],
+    'lab-quimica-organica-ii': ['quimica-organica-i', 'lab-quimica-organica-i'],
+    
+    // Segundo Año Semestre II -> III
+    'microbiologia-general': ['biologia-ii'],
+    'lab-microbiologia-general': ['biologia-ii'],
+    'ingles-iii': ['ingles-ii'],
+    'psicologia-salud-ii': ['psicologia-salud-i'],
+    'metodologia-investigacion': ['matematicas-ciencias'],
+    
+    // Prerequisites for Ciencias Médicas Básicas
+    'fundamentos-medicina': ['orientacion-academica', 'espanol-ii', 'biologia-celular', 'fisica-ii', 'lab-fisica-ii', 'antropologia-cristiana', 'quimica-organica-ii', 'lab-quimica-organica-ii', 'microbiologia-general', 'psicologia-salud-ii', 'metodologia-investigacion'],
+    'ciencias-morfologicas-i': ['orientacion-academica', 'espanol-ii', 'biologia-celular', 'fisica-ii', 'lab-fisica-ii', 'antropologia-cristiana', 'quimica-organica-ii', 'lab-quimica-organica-ii', 'microbiologia-general', 'psicologia-salud-ii', 'metodologia-investigacion'],
+    'ciencias-fisiologicas-i': ['orientacion-academica', 'espanol-ii', 'biologia-celular', 'fisica-ii', 'lab-fisica-ii', 'antropologia-cristiana', 'quimica-organica-ii', 'lab-quimica-organica-ii', 'microbiologia-general', 'psicologia-salud-ii', 'metodologia-investigacion'],
+    'inmunologia-i': ['orientacion-academica', 'espanol-ii', 'biologia-celular', 'fisica-ii', 'lab-fisica-ii', 'antropologia-cristiana', 'quimica-organica-ii', 'lab-quimica-organica-ii', 'microbiologia-general', 'psicologia-salud-ii', 'metodologia-investigacion'],
+    'bioquimica-i': ['orientacion-academica', 'espanol-ii', 'biologia-celular', 'fisica-ii', 'lab-fisica-ii', 'antropologia-cristiana', 'quimica-organica-ii', 'lab-quimica-organica-ii', 'microbiologia-general', 'psicologia-salud-ii', 'metodologia-investigacion'],
+    'bioestadistica': ['orientacion-academica', 'espanol-ii', 'biologia-celular', 'fisica-ii', 'lab-fisica-ii', 'antropologia-cristiana', 'quimica-organica-ii', 'lab-quimica-organica-ii', 'microbiologia-general', 'psicologia-salud-ii', 'metodologia-investigacion'],
+    'biologia-molecular': ['orientacion-academica', 'espanol-ii', 'biologia-celular', 'fisica-ii', 'lab-fisica-ii', 'antropologia-cristiana', 'quimica-organica-ii', 'lab-quimica-organica-ii', 'microbiologia-general', 'psicologia-salud-ii', 'metodologia-investigacion'],
+    
+    // Ciencias Médicas Básicas internal prerequisites
+    'ciencias-morfologicas-ii': ['ciencias-morfologicas-i'],
+    'ciencias-fisiologicas-ii': ['ciencias-fisiologicas-i'],
+    'inmunologia-ii': ['inmunologia-i'],
+    'bioquimica-ii': ['bioquimica-i'],
+    'destrezas-medicas-i': ['fundamentos-medicina', 'ciencias-morfologicas-i'],
+    'epidemiologia-campo': ['bioestadistica'],
+    'microbiologia-parasitologia': ['biologia-molecular'],
+    
+    // Semester III of 3rd year
+    'ingles-salud': ['ingles-iii'],
+    'salud-publica': ['destrezas-medicas-i'],
+    'bioetica-medica': ['fundamentos-medicina', 'antropologia-cristiana'],
+    'fisiopatologia-i': ['ciencias-morfologicas-ii', 'bioquimica-ii'],
+    'farmacologia-i': ['bioquimica-ii'],
+    'epidemiologia-clinica': ['epidemiologia-campo'],
+    'destrezas-medicas-ii': ['destrezas-medicas-i'],
+    
+    // 4th year semester I
+    'gestion-salud': ['salud-publica'],
+    'patologia-i': ['fisiopatologia-i', 'microbiologia-parasitologia'],
+    'farmacologia-ii': ['fisiopatologia-i', 'farmacologia-i', 'microbiologia-parasitologia'],
+    'medicina-familiar-i': ['salud-publica', 'destrezas-medicas-i'],
+    'fisiopatologia-ii': ['fisiopatologia-i'],
+    'medicina-evidencia': ['salud-publica', 'epidemiologia-clinica'],
+    
+    // 4th year semester II (Preinternado)
+    'patologia-ii': ['patologia-i'],
+    'medicina-familiar-ii': ['medicina-familiar-i'],
+    'salud-mental': ['destrezas-medicas-ii'],
+    'neurologia': ['fisiopatologia-ii'],
+    'neurociencias': ['farmacologia-ii'],
+    'tema-tesis': ['gestion-salud', 'medicina-evidencia'],
+    
+    // 4th year semester III
+    'moral-medica': ['bioetica-medica'],
+    'pediatria-i': ['patologia-ii', 'salud-mental', 'neurociencias'],
+    'cardiopulmonar': ['patologia-ii', 'neurociencias'],
+    'ciencias-basicas-integradas': ['patologia-ii', 'neurociencias'],
+    'anteproyecto-tesis': ['tema-tesis'],
+    'nefrologia': ['patologia-ii', 'neurociencias'],
+    'medicina-familiar-iii': ['medicina-familiar-ii'],
+    
+    // 5th year semester I
+    'medicina-legal': ['moral-medica'],
+    'hemato-oncologia': ['ciencias-basicas-integradas'],
+    'geriatria': ['neurociencias'],
+    'gastroenterologia': ['ciencias-basicas-integradas'],
+    'pediatria-ii': ['ciencias-basicas-integradas', 'neurociencias'],
+    'tesis': ['anteproyecto-tesis'],
+    'endocrinologia': ['ciencias-basicas-integradas'],
+    'obstetricia': ['ciencias-basicas-integradas'],
+    
+    // 5th year semester II
+    'ginecologia': ['ciencias-basicas-integradas'],
+    'urologia': ['ciencias-basicas-integradas'],
+    'oto-oftalmologia': ['ciencias-basicas-integradas'],
+    'infectologia': ['ciencias-basicas-integradas'],
+    'reumatologia': ['ciencias-basicas-integradas'],
+    'cirugia-anestesia': ['ciencias-basicas-integradas'],
+    'trauma-ortopedia': ['ciencias-basicas-integradas'],
+    'dermatologia': ['ciencias-basicas-integradas'],
+    
+    // Internados - all require multiple prerequisites
+    'internado-cirugia': ['medicina-legal', 'hemato-oncologia', 'geriatria', 'gastroenterologia', 'pediatria-ii', 'endocrinologia', 'obstetricia', 'ginecologia', 'urologia', 'oto-oftalmologia', 'infectologia', 'reumatologia', 'cirugia-anestesia', 'trauma-ortopedia', 'dermatologia', 'anteproyecto-tesis'],
+    'internado-medicina-social': ['medicina-legal', 'hemato-oncologia', 'geriatria', 'gastroenterologia', 'pediatria-ii', 'endocrinologia', 'obstetricia', 'ginecologia', 'urologia', 'oto-oftalmologia', 'infectologia', 'reumatologia', 'cirugia-anestesia', 'trauma-ortopedia', 'dermatologia', 'anteproyecto-tesis'],
+    'internado-pediatria': ['medicina-legal', 'hemato-oncologia', 'geriatria', 'gastroenterologia', 'pediatria-ii', 'endocrinologia', 'obstetricia', 'ginecologia', 'urologia', 'oto-oftalmologia', 'infectologia', 'reumatologia', 'cirugia-anestesia', 'trauma-ortopedia', 'dermatologia', 'anteproyecto-tesis'],
+    'internado-ginecologia': ['medicina-legal', 'hemato-oncologia', 'geriatria', 'gastroenterologia', 'pediatria-ii', 'endocrinologia', 'obstetricia', 'ginecologia', 'urologia', 'oto-oftalmologia', 'infectologia', 'reumatologia', 'cirugia-anestesia', 'trauma-ortopedia', 'dermatologia', 'anteproyecto-tesis'],
+    'internado-psiquiatria': ['medicina-legal', 'hemato-oncologia', 'geriatria', 'gastroenterologia', 'pediatria-ii', 'endocrinologia', 'obstetricia', 'ginecologia', 'urologia', 'oto-oftalmologia', 'infectologia', 'reumatologia', 'cirugia-anestesia', 'trauma-ortopedia', 'dermatologia', 'anteproyecto-tesis'],
+    'internado-medicina-interna': ['medicina-legal', 'hemato-oncologia', 'geriatria', 'gastroenterologia', 'pediatria-ii', 'endocrinologia', 'obstetricia', 'ginecologia', 'urologia', 'oto-oftalmologia', 'infectologia', 'reumatologia', 'cirugia-anestesia', 'trauma-ortopedia', 'dermatologia', 'anteproyecto-tesis']
 };
+
+// Track completed subjects
+let completedSubjects = new Set();
+
+// Initialize the application
+document.addEventListener('DOMContentLoaded', function() {
+    initializeSubjects();
+    updateSubjectStates();
+    
+    // Add event listeners to all subjects
+    document.querySelectorAll('.subject').forEach(subject => {
+        subject.addEventListener('click', handleSubjectClick);
+    });
+    
+    // Add reset button functionality
+    document.getElementById('resetBtn').addEventListener('click', resetMalla);
+});
+
+function initializeSubjects() {
+    // All subjects start as locked except first semester subjects
+    const firstSemesterSubjects = [
+        'electiva-arte', 'biologia-i', 'lab-biologia-i', 'electiva-historia-mundial',
+        'electiva-ciencia-humanismo', 'espanol-i', 'razonamiento-logico', 'orientacion-academica'
+    ];
+    
+    document.querySelectorAll('.subject').forEach(subject => {
+        const subjectId = subject.getAttribute('data-id');
+        if (firstSemesterSubjects.includes(subjectId)) {
+            subject.classList.remove('locked');
+            subject.classList.add('available');
+        }
+    });
+}
+
+function handleSubjectClick(event) {
+    const subject = event.target;
+    const subjectId = subject.getAttribute('data-id');
+    
+    // Can only click on available subjects
+    if (!subject.classList.contains('available')) {
+        return;
+    }
+    
+    // Toggle completion status
+    if (completedSubjects.has(subjectId)) {
+        completedSubjects.delete(subjectId);
+        subject.classList.remove('completed');
+        subject.classList.add('available');
+    } else {
+        completedSubjects.add(subjectId);
+        subject.classList.remove('available');
+        subject.classList.add('completed');
+    }
+    
+    // Update all subject states
+    updateSubjectStates();
+}
+
+function updateSubjectStates() {
+    document.querySelectorAll('.subject').forEach(subject => {
+        const subjectId = subject.getAttribute('data-id');
+        
+        // Skip if already completed
+        if (completedSubjects.has(subjectId)) {
+            return;
+        }
+        
+        // Check if prerequisites are met
+        const prereqs = prerequisites[subjectId] || [];
+        const prereqsMet = prereqs.every(prereq => completedSubjects.has(prereq));
+        
+        if (prereqsMet) {
+            subject.classList.remove('locked');
+            subject.classList.add('available');
+        } else {
+            subject.classList.remove('available');
+            subject.classList.add('locked');
+        }
+    });
+}
+
+function resetMalla() {
+    // Clear completed subjects
+    completedSubjects.clear();
+    
+    // Reset all subjects to locked
+    document.querySelectorAll('.subject').forEach(subject => {
+        subject.classList.remove('completed', 'available');
+        subject.classList.add('locked');
+    });
+    
+    // Re-initialize first semester subjects
+    initializeSubjects();
+}
+
+// Function to check if all prerequisites for a cycle are completed
+function checkCycleCompletion() {
+    const premedicalSubjects = [
+        'electiva-arte', 'biologia-i', 'lab-biologia-i', 'electiva-historia-mundial',
+        'electiva-ciencia-humanismo', 'espanol-i', 'razonamiento-logico', 'orientacion-academica',
+        'biologia-ii', 'lab-biologia-ii', 'electiva-deporte', 'espanol-ii', 'matematicas-ciencias',
+        'quimica-i', 'lab-quimica-i', 'electiva-filosofia', 'fisica-i', 'lab-fisica-i',
+        'electiva-historia-dominicana', 'quimica-ii', 'lab-quimica-ii', 'sociologia-salud',
+        'biologia-celular', 'lab-biologia-celular', 'fisica-ii', 'lab-fisica-ii', 'ingles-i',
+        'electiva-literatura', 'quimica-organica-i', 'lab-quimica-organica-i', 'intro-anatomia',
+        'intro-fisiologia', 'antropologia-cristiana', 'ingles-ii', 'psicologia-salud-i',
+        'quimica-organica-ii', 'lab-quimica-organica-ii', 'microbiologia-general',
+        'lab-microbiologia-general', 'electiva-ciencia-ambiental', 'lab-ciencia-ambiental',
+        'ingles-iii', 'psicologia-salud-ii', 'metodologia-investigacion'
+    ];
+    
+    const premedicalComplete = premedicalSubjects.every(subject => completedSubjects.has(subject));
+    
+    if (premedicalComplete) {
+        console.log('Ciclo Premédica completado - Ciencias Médicas Básicas desbloqueadas');
+    }
+    
+    return premedicalComplete;
+}
+
+// Add visual feedback for hover effects
+document.addEventListener('DOMContentLoaded', function() {
+    const subjects = document.querySelectorAll('.subject');
+    
+    subjects.forEach(subject => {
+        subject.addEventListener('mouseenter', function() {
+            if (this.classList.contains('available')) {
+                this.style.transform = 'translateY(-3px) scale(1.02)';
+            }
+        });
+        
+        subject.addEventListener('mouseleave', function() {
+            if (this.classList.contains('available')) {
+                this.style.transform = 'translateY(-2px) scale(1)';
+            }
+        });
+    });
+});
+
+// Add keyboard navigation
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'r' || event.key === 'R') {
+        if (event.ctrlKey || event.metaKey) {
+            event.preventDefault();
+            resetMalla();
+        }
+    }
+});
+
+// Add progress tracking
+function getProgress() {
+    const totalSubjects = document.querySelectorAll('.subject').length;
+    const completedCount = completedSubjects.size;
+    return {
+        completed: completedCount,
+        total: totalSubjects,
+        percentage: Math.round((completedCount / totalSubjects) * 100)
+    };
+}
+
+// Update progress display (you can expand this)
+function updateProgressDisplay() {
+    const progress = getProgress();
+    console.log(`Progreso: ${progress.completed}/${progress.total} (${progress.percentage}%)`);
+}
+
+// Add this to the subject click handler
+function handleSubjectClick(event) {
+    const subject = event.target;
+    const subjectId = subject.getAttribute('data-id');
+    
+    if (!subject.classList.contains('available')) {
+        return;
+    }
+    
+    if (completedSubjects.has(subjectId)) {
+        completedSubjects.delete(subjectId);
+        subject.classList.remove('completed');
+        subject.classList.add('available');
+    } else {
+        completedSubjects.add(subjectId);
+        subject.classList.remove('available');
+        subject.classList.add('completed');
+    }
+    
+    updateSubjectStates();
+    updateProgressDisplay();
+}
