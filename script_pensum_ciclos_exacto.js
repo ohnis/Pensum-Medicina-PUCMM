@@ -99,7 +99,7 @@ const materias = [
 
 ];
 
-let aprobadas = new Set();
+const aprobadas = new Set();
 
 function actualizarProgreso() {
   const total = materias.length;
@@ -110,33 +110,30 @@ function actualizarProgreso() {
 }
 
 function renderMaterias() {
-  const contenedor = document.getElementById("grid-container");
-  contenedor.innerHTML = "";
+  document.querySelectorAll('.course').forEach(btn => {
+    const nombre = btn.dataset.nombre;
+    const materia = materias.find(m => m.nombre === nombre);
+    if (!materia) return;
 
-  materias.forEach((materia) => {
-    const btn = document.createElement("div");
-    btn.innerText = materia.nombre;
-    btn.classList.add("course");
+    const requisitosCumplidos = materia.requisitos.every(req => aprobadas.has(req));
+    btn.classList.remove("locked", "completed");
 
-    const requisitosCumplidos = materia.requisitos.every((req) => aprobadas.has(req));
-    if (!requisitosCumplidos && !aprobadas.has(materia.nombre)) {
+    if (!requisitosCumplidos && !aprobadas.has(nombre)) {
       btn.classList.add("locked");
-    } else if (aprobadas.has(materia.nombre)) {
+    } else if (aprobadas.has(nombre)) {
       btn.classList.add("completed");
     }
 
     btn.onclick = () => {
       if (btn.classList.contains("locked")) return;
-      if (aprobadas.has(materia.nombre)) {
-        aprobadas.delete(materia.nombre);
+      if (aprobadas.has(nombre)) {
+        aprobadas.delete(nombre);
       } else {
-        aprobadas.add(materia.nombre);
+        aprobadas.add(nombre);
       }
       renderMaterias();
       actualizarProgreso();
     };
-
-    contenedor.appendChild(btn);
   });
 }
 
