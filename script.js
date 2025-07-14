@@ -99,41 +99,42 @@ const materias = [
 
 const aprobadas = new Set();
 
-function actualizarProgreso() {
-  const total = materias.length;
-  const completadas = aprobadas.size;
-  const porcentaje = Math.round((completadas / total) * 100);
-  document.getElementById("progress-bar").style.width = porcentaje + "%";
-  document.getElementById("progress-text").innerText = porcentaje + "%";
-}
+  function actualizarProgreso() {
+    const total = document.querySelectorAll('.course').length;
+    const completadas = document.querySelectorAll('.course.completed').length;
+    const porcentaje = Math.round((completadas / total) * 100);
+    document.getElementById("progress-bar").style.width = porcentaje + "%";
+    document.getElementById("progress-text").innerText = porcentaje + "%";
+  }
 
-function renderMaterias() {
-  document.querySelectorAll('.course').forEach(btn => {
-    const nombre = btn.dataset.nombre;
-    const materia = materias.find(m => m.nombre === nombre);
-    if (!materia) return;
+  function renderMaterias() {
+    document.querySelectorAll('.course').forEach(btn => {
+      const nombre = btn.dataset.nombre;
+      const materia = materias.find(m => m.nombre === nombre);
+      const requisitos = materia?.requisitos || [];
+      const requisitosCumplidos = requisitos.every(req => aprobadas.has(req));
 
-    const requisitosCumplidos = materia.requisitos.every(req => aprobadas.has(req));
-    btn.classList.remove("locked", "completed");
+      btn.classList.remove("locked", "completed");
 
-    if (!requisitosCumplidos && !aprobadas.has(nombre)) {
-      btn.classList.add("locked");
-    } else if (aprobadas.has(nombre)) {
-      btn.classList.add("completed");
-    }
-
-    btn.onclick = () => {
-      if (btn.classList.contains("locked")) return;
-      if (aprobadas.has(nombre)) {
-        aprobadas.delete(nombre);
-      } else {
-        aprobadas.add(nombre);
+      if (!requisitosCumplidos && !aprobadas.has(nombre)) {
+        btn.classList.add("locked");
+      } else if (aprobadas.has(nombre)) {
+        btn.classList.add("completed");
       }
-      renderMaterias();
-      actualizarProgreso();
-    };
-  });
-}
 
-renderMaterias();
-actualizarProgreso();
+      btn.onclick = () => {
+        if (btn.classList.contains("locked")) return;
+        if (aprobadas.has(nombre)) {
+          aprobadas.delete(nombre);
+        } else {
+          aprobadas.add(nombre);
+        }
+        renderMaterias();
+        actualizarProgreso();
+      };
+    });
+  }
+
+  renderMaterias();
+  actualizarProgreso();
+});
