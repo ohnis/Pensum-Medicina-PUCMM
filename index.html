@@ -6,26 +6,26 @@
   <title>Malla Curricular Interactiva - Medicina</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    .filtro-ciclos {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 1rem 0;
-    }
-    .filtro-ciclos button {
-      padding: 8px 16px;
-      border: none;
-      background-color: #3399ff;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .filtro-ciclos button.active {
-      background-color: #004d99;
-    }
-  </style>
+.ciclo-bloque {
+  margin: 2rem auto;
+  max-width: 1200px;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: #f0f8ff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+.ciclo-titulo {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #003366;
+}
+.ciclo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+}
+</style>
 </head>
 <body>
   <header>
@@ -36,60 +36,163 @@
     </div>
   </header>
 
-  <!-- Filtro por ciclos -->
-  <div class="filtro-ciclos">
-    <button onclick="filtrarCiclo('Todos')" class="active">Todos</button>
-    <button onclick="filtrarCiclo('Premédica')">Premédica</button>
-    <button onclick="filtrarCiclo('Ciencias Médicas Básicas')">Ciencias Médicas Básicas</button>
-    <button onclick="filtrarCiclo('Preinternado')">Preinternado</button>
-    <button onclick="filtrarCiclo('Internado')">Internado</button>
+  <section class="ciclo-bloque">
+  <h2 class="ciclo-titulo">Premédica</h2>
+  <div class="ciclo-grid" id="Premédica">
+    <div class="course" data-nombre="Electiva de Arte">Electiva de Arte</div>
+    <div class="course" data-nombre="Biología I">Biología I</div>
+    <div class="course" data-nombre="Laboratorio de Biología I">Laboratorio de Biología I</div>
+    <div class="course" data-nombre="Electiva Historia y Sociedad Mundial">Electiva Historia y Sociedad Mundial</div>
+    <div class="course" data-nombre="Electiva de Ciencia y Humanismo">Electiva de Ciencia y Humanismo</div>
+    <div class="course" data-nombre="Español I">Español I</div>
+    <div class="course" data-nombre="Razonamiento Lógico y Matemático">Razonamiento Lógico y Matemático</div>
+    <div class="course" data-nombre="Orientación Académica">Orientación Académica</div>
+    <div class="course" data-nombre="Biología II">Biología II</div>
+    <div class="course" data-nombre="Laboratorio de Biología II">Laboratorio de Biología II</div>
+    <div class="course" data-nombre="Electiva de Deporte">Electiva de Deporte</div>
+    <div class="course" data-nombre="Español II">Español II</div>
+    <div class="course" data-nombre="Matemáticas para Ciencias">Matemáticas para Ciencias</div>
+    <div class="course" data-nombre="Química I">Química I</div>
+    <div class="course" data-nombre="Laboratorio de Química I">Laboratorio de Química I</div>
+    <div class="course" data-nombre="Electiva de Filosofía">Electiva de Filosofía</div>
+    <div class="course" data-nombre="Física I">Física I</div>
+    <div class="course" data-nombre="Laboratorio de Física I">Laboratorio de Física I</div>
+    <div class="course" data-nombre="Electiva Historia y Sociedad Dominicana">Electiva Historia y Sociedad Dominicana</div>
+    <div class="course" data-nombre="Química II">Química II</div>
+    <div class="course" data-nombre="Laboratorio de Química II">Laboratorio de Química II</div>
+    <div class="course" data-nombre="Sociología de la Salud">Sociología de la Salud</div>
+    <div class="course" data-nombre="Biología Celular y Genética">Biología Celular y Genética</div>
+    <div class="course" data-nombre="Laboratorio de Biología Celular y Genética">Laboratorio de Biología Celular y Genética</div>
+    <div class="course" data-nombre="Física II">Física II</div>
+    <div class="course" data-nombre="Laboratorio de Física II">Laboratorio de Física II</div>
+    <div class="course" data-nombre="Inglés I">Inglés I</div>
+    <div class="course" data-nombre="Electiva de Literatura">Electiva de Literatura</div>
+    <div class="course" data-nombre="Química Orgánica I">Química Orgánica I</div>
+    <div class="course" data-nombre="Laboratorio de Química Orgánica I">Laboratorio de Química Orgánica I</div>
+    <div class="course" data-nombre="Introducción a la Anatomía">Introducción a la Anatomía</div>
+    <div class="course" data-nombre="Introducción a la Fisiología">Introducción a la Fisiología</div>
+    <div class="course" data-nombre="Antropología Cristiana">Antropología Cristiana</div>
+    <div class="course" data-nombre="Inglés II">Inglés II</div>
+    <div class="course" data-nombre="Psicología de la Salud I">Psicología de la Salud I</div>
+    <div class="course" data-nombre="Química Orgánica II">Química Orgánica II</div>
+    <div class="course" data-nombre="Laboratorio de Química Orgánica II">Laboratorio de Química Orgánica II</div>
+    <div class="course" data-nombre="Microbiología General">Microbiología General</div>
+    <div class="course" data-nombre="Laboratorio de Microbiología General">Laboratorio de Microbiología General</div>
+    <div class="course" data-nombre="Electiva de Ciencia Ambiental">Electiva de Ciencia Ambiental</div>
+    <div class="course" data-nombre="Laboratorio de Ciencia Ambiental">Laboratorio de Ciencia Ambiental</div>
+    <div class="course" data-nombre="Inglés III">Inglés III</div>
+    <div class="course" data-nombre="Psicología de la Salud II">Psicología de la Salud II</div>
+    <div class="course" data-nombre="Fundamentos de Metodología de la Investigación">Fundamentos de Metodología de la Investigación</div>
   </div>
+</section>
 
-  <main id="grid-container"></main>
+<section class="ciclo-bloque">
+  <h2 class="ciclo-titulo">Ciencias Médicas Básicas</h2>
+  <div class="ciclo-grid" id="Ciencias Médicas Básicas">
+    <div class="course" data-nombre="Fundamentos de Medicina">Fundamentos de Medicina</div>
+    <div class="course" data-nombre="Ciencias Morfológicas I">Ciencias Morfológicas I</div>
+    <div class="course" data-nombre="Ciencias Fisiológicas I">Ciencias Fisiológicas I</div>
+    <div class="course" data-nombre="Inmunología I">Inmunología I</div>
+    <div class="course" data-nombre="Bioquímica I">Bioquímica I</div>
+    <div class="course" data-nombre="Bioestadística">Bioestadística</div>
+    <div class="course" data-nombre="Biología Molecular y Genética">Biología Molecular y Genética</div>
+    <div class="course" data-nombre="Epidemiología de Campo">Epidemiología de Campo</div>
+    <div class="course" data-nombre="Ciencias Morfológicas II">Ciencias Morfológicas II</div>
+    <div class="course" data-nombre="Ciencias Fisiológicas II">Ciencias Fisiológicas II</div>
+    <div class="course" data-nombre="Inmunología II">Inmunología II</div>
+    <div class="course" data-nombre="Bioquímica II">Bioquímica II</div>
+    <div class="course" data-nombre="Destrezas Médicas I">Destrezas Médicas I</div>
+    <div class="course" data-nombre="Inglés para la Salud">Inglés para la Salud</div>
+    <div class="course" data-nombre="Salud Pública">Salud Pública</div>
+    <div class="course" data-nombre="Bioética Médica">Bioética Médica</div>
+    <div class="course" data-nombre="Fisiopatología I">Fisiopatología I</div>
+    <div class="course" data-nombre="Farmacología I">Farmacología I</div>
+    <div class="course" data-nombre="Epidemiología Clínica">Epidemiología Clínica</div>
+    <div class="course" data-nombre="Microbiología y Parasitología">Microbiología y Parasitología</div>
+    <div class="course" data-nombre="Destrezas Médicas II">Destrezas Médicas II</div>
+    <div class="course" data-nombre="Gestión en Salud">Gestión en Salud</div>
+    <div class="course" data-nombre="Patología I">Patología I</div>
+    <div class="course" data-nombre="Farmacología II y Toxicología">Farmacología II y Toxicología</div>
+    <div class="course" data-nombre="Medicina Familiar y Comunitaria I">Medicina Familiar y Comunitaria I</div>
+    <div class="course" data-nombre="Fisiopatología II">Fisiopatología II</div>
+    <div class="course" data-nombre="Medicina Basada en Evidencia">Medicina Basada en Evidencia</div>
+  </div>
+</section>
+
+<section class="ciclo-bloque">
+  <h2 class="ciclo-titulo">Preinternado</h2>
+  <div class="ciclo-grid" id="Preinternado">
+    <div class="course" data-nombre="Patología II">Patología II</div>
+    <div class="course" data-nombre="Medicina Familiar y Comunitaria II">Medicina Familiar y Comunitaria II</div>
+    <div class="course" data-nombre="Salud Mental">Salud Mental</div>
+    <div class="course" data-nombre="Neurología">Neurología</div>
+    <div class="course" data-nombre="Neurociencias Biológicas">Neurociencias Biológicas</div>
+    <div class="course" data-nombre="Tema de Tesis">Tema de Tesis</div>
+    <div class="course" data-nombre="Pediatría I">Pediatría I</div>
+    <div class="course" data-nombre="Cardiopulmonar">Cardiopulmonar</div>
+    <div class="course" data-nombre="Ciencias Médicas Básicas Integradas">Ciencias Médicas Básicas Integradas</div>
+    <div class="course" data-nombre="Anteproyecto de Tesis">Anteproyecto de Tesis</div>
+    <div class="course" data-nombre="Nefrología">Nefrología</div>
+    <div class="course" data-nombre="Medicina Familiar y Comunitaria III">Medicina Familiar y Comunitaria III</div>
+    <div class="course" data-nombre="Medicina Legal">Medicina Legal</div>
+    <div class="course" data-nombre="Hemato/Oncología">Hemato/Oncología</div>
+    <div class="course" data-nombre="Geriatría">Geriatría</div>
+    <div class="course" data-nombre="Gastroenterología">Gastroenterología</div>
+    <div class="course" data-nombre="Tesis">Tesis</div>
+  </div>
+</section>
+
+<section class="ciclo-bloque">
+  <h2 class="ciclo-titulo">Internado</h2>
+  <div class="ciclo-grid" id="Internado">
+    <div class="course" data-nombre="Internado de Cirugía">Internado de Cirugía</div>
+    <div class="course" data-nombre="Internado de Medicina Social, Comunitaria y Familiar">Internado de Medicina Social, Comunitaria y Familiar</div>
+    <div class="course" data-nombre="Internado de Pediatría">Internado de Pediatría</div>
+    <div class="course" data-nombre="Internado de Ginecología y Obstetricia">Internado de Ginecología y Obstetricia</div>
+    <div class="course" data-nombre="Internado de Psiquiatría">Internado de Psiquiatría</div>
+    <div class="course" data-nombre="Internado de Medicina Interna">Internado de Medicina Interna</div>
+  </div>
+</section>
+
+
 
   <script src="script_pensum_ciclos_exacto.js"></script>
   <script>
-    let cicloActual = 'Todos';
+    let aprobadas = new Set();
 
-    function filtrarCiclo(ciclo) {
-      cicloActual = ciclo;
-      document.querySelectorAll('.filtro-ciclos button').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.innerText === ciclo) btn.classList.add('active');
-      });
-      renderMaterias();
+    function actualizarProgreso() {
+      const total = materias.length;
+      const completadas = aprobadas.size;
+      const porcentaje = Math.round((completadas / total) * 100);
+      document.getElementById("progress-bar").style.width = porcentaje + "%";
+      document.getElementById("progress-text").innerText = porcentaje + "%";
     }
 
     function renderMaterias() {
-      const contenedor = document.getElementById("grid-container");
-      contenedor.innerHTML = "";
+      document.querySelectorAll('.course').forEach(btn => {
+        const nombre = btn.dataset.nombre;
+        const materia = materias.find(m => m.nombre === nombre);
+        if (!materia) return;
 
-      materias.forEach((materia) => {
-        if (cicloActual !== 'Todos' && materia.ciclo !== cicloActual) return;
+        const requisitosCumplidos = materia.requisitos.every(req => aprobadas.has(req));
+        btn.classList.remove("locked", "completed");
 
-        const btn = document.createElement("div");
-        btn.innerText = materia.nombre;
-        btn.classList.add("course");
-
-        const requisitosCumplidos = materia.requisitos.every((req) => aprobadas.has(req));
-        if (!requisitosCumplidos && !aprobadas.has(materia.nombre)) {
+        if (!requisitosCumplidos && !aprobadas.has(nombre)) {
           btn.classList.add("locked");
-        } else if (aprobadas.has(materia.nombre)) {
+        } else if (aprobadas.has(nombre)) {
           btn.classList.add("completed");
         }
 
         btn.onclick = () => {
           if (btn.classList.contains("locked")) return;
-          if (aprobadas.has(materia.nombre)) {
-            aprobadas.delete(materia.nombre);
+          if (aprobadas.has(nombre)) {
+            aprobadas.delete(nombre);
           } else {
-            aprobadas.add(materia.nombre);
+            aprobadas.add(nombre);
           }
           renderMaterias();
           actualizarProgreso();
         };
-
-        contenedor.appendChild(btn);
       });
     }
 
